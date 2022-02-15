@@ -1,0 +1,3 @@
+# office_deployment_tool_configurationXML_generator
+
+htmlとJavascriptで作成しました。
