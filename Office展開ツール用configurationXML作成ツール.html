@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>買い切りOffice インストール用configuration.xml出力ツール</title>
+</head>
+
+<body>
+買い切りOffice インストール用configuration.xml出力ツール
+<br>
+<br>
+<input type="radio" name="prodID" value="Standard2021Volume" checked>Office Standard2021
+<input type="radio" name="prodID" value="ProPlus2021Volume">Office Professional Plus 2021
+<br>
+<input type="radio" name="lang" value="ja-jp" checked>日本語
+<input type="radio" name="lang" value="en-us">英語(米国)
+<br>
+<input type="radio" name="6432ver" value="64" checked>64bit
+<input type="radio" name="6432ver" value="32">32bit
+<br>
+<textarea name="output" id="ConfXMLTextBox" cols="60" rows="10" placeholder="出力先"></textarea>
+<br>
+<button onClick='load()'>生成</button>
+
+<script>
+function generateConfXML() {
+let OfficeProdID = parseDOM(document.getElementsByName("prodID"));
+let LangID = parseDOM(document.getElementsByName("lang"));
+let _6432version = parseDOM(document.getElementsByName("6432ver"));
+
+let baseXML = `<Configuration>
+  <Add OfficeClientEdition="` + _6432version + `" Channel="PerpetualVL2021">
+    <Product ID="` + OfficeProdID + `">
+      <Language ID="` + LangID + `" />
+    </Product>
+  </Add>
+</Configuration>
+`;
+
+return baseXML;
+}
+
+function parseDOM(e) {
+	for (let i = 0; i < e.length; i++) {
+		if (e.item(i).checked) return e.item(i).value;
+			}
+	}
+
+function load() {
+	document.getElementById("ConfXMLTextBox").value = generateConfXML();
+}
+
+
+</script>
+
+</body>
+</html>
