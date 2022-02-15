@@ -1,3 +1,3 @@
-# office_deployment_tool_configurationXML_generator
+# Office展開ツール用configuration.xml生成ツール
 
 htmlとJavascriptで作成しました。
